@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<%-include layout.ejs%>
+<%-include nav.ejs%>
+<form method='post' action='javascript:;' role="form" id="frmUploadFile">
+    <h2>注册——</h2>
+    <input type="text" required name="UserId" placeholder="请输入用户名"><br><br>
+    <input type="password" required name="UserPassword" placeholder="请输入密码"><br><br>
+    <input type="text" required name="UserName" placeholder="姓名"><br><br>
+    <input type="text" required name="Gender" placeholder="性别"><br><br>
+    <input type="text" required name="BirthDate" placeholder="出生日期"><br><br>
+    <input type="file" required name="files" id="headerPic"><div id="imgShow"></div><br><br>
+    <button value="" onclick="uploadFile()">注册</button><span id="spanMessage"></span>
+</form>
+
+<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="/javascripts/demo.js"></script>
+<%-include footerScript.ejs%>
+</body>
+</html>

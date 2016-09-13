@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+
+</head>
+<body>
+<%-include layout.ejs%>
+<%-include nav.ejs%>
+<h2>查看数据</h2>
+<div id="container">
+	<% if(users.length > 0){ %>
+	<table id="tbUser">
+		<% for(var i = 0;i < users.length;i++) { %>
+		<tr>
+			<td><a href="uid?id=<%= users[i].UserId %>">帐号：<%= users[i].UserId %></a></td>
+			<td>姓名： <%= users[i].UserName %></td>
+			<td>密码： <%= users[i].UserPassword %></td>
+			<td>性别：<%= users[i].Gender %></td>
+			<td>birthday：<%= users[i].BirthDate %></td>
+			<td>pic：<img src='/upload/<%= users[i].Pic %>' alt="" width="50px"></td>
+			<td><a href='update?id=<%= users[i].UserId %>'>修改</a></td>
+			<td><a href="delete?id=<%= users[i].UserId %>">删除</a></td>
+
+		</tr>
+		<% } %>
+	</table>
+	<% } %>
+</div>
+<%-include footerScript.ejs%>
+</body>
+</html>

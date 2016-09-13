@@ -1,0 +1,93 @@
+body {
+    padding-top: 50px;
+}
+/*nav{*/
+    /*line-height: 100%;*/
+/*}*/
+.navbar-inverse{
+    margin: 0;
+    padding: 0;
+}
+.dropdown-toggle img{
+    padding: 0;
+    margin:-6px 0;
+    /*height:80%;*/
+}
+.form-control{
+    /*width:80%;*/
+    margin:auto;
+}
+.dropdown-menu {
+    padding: 5px 15px;
+}
+.carousel {
+    height: 450px;
+    background-color: #000;
+    margin-bottom: 60px;
+}
+.carousel img{
+
+}
+.carousel .item {
+    height: 450px;
+    background-color: #000;
+}
+
+.carousel img {
+    width: 100%;
+}
+
+.content{
+    margin-bottom: 40px;
+}
+.label-info{
+    /*size:2em;*/
+}
+.btn-my{
+    background-color: #E7A169;
+    border:solid 1px #dd9967;
+    color: #fff;
+}
+div.divider {
+    height: 1px;
+    width:95%;
+    margin:9px auto 0;
+    /*margin: 9px 0;*/
+    overflow: hidden;
+    background-color: #e5e5e5
+}
+.card_foot{
+    line-height: 100%;
+    position: relative;
+}
+.card_foot .pull-left{
+    position: absolute;
+    top: 1.5em;
+}
+.row{
+    margin-bottom: 4em;
+}
+#summary-container .col-md-4 {
+    text-align: center;
+}
+
+.feature {
+    padding: 30px 0;
+
+}
+
+.feature-heading {
+    font-size: 50px;
+    color: #E7A169;
+}
+
+.feature-heading .text-muted {
+
+}
+.tab-pane img{
+    width:300px;
+}
+
+#logined{
+    /*display: none;*/
+}

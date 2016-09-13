@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<%- include layout.ejs %>
+</head>
+<body>
+<%- include nav.ejs %>
+<form  class="form-horizontal" method='post' action='javascript:;' role="form" id="frmUploadFile">
+	<div class="form-group">
+		<label class="control-label col-sm-2">帐号：</label>
+		<div class="col-sm-4">
+			<input type="text" name="UserId" value="112" readonly
+				   class="form-control"/>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="control-label col-sm-2">头像：</label>
+		<div class="col-sm-4">
+			<input type="file" name="files" id="myFile" multiple class="form-control">
+		</div>
+		<label for="control-label">图片限于bmp,png,gif,jpeg,jpg格式,且大小不超过1M</label><br/>
+		<label for="control-label" id="fileSize"></label>
+	</div>
+	<div id="imgShow"></div>
+	<div class="form-group">
+		<label class="control-label col-sm-2"></label>
+
+		<button class="btn btn-default" class="col-sm-4"  onClick="uploadFile()">上传</button>
+		<span class="help-inline" id="spanMessage"></span>
+	</div>
+</form>
+<script src="/javascripts/UserMultiple.js"></script>
+<%- include footerScript.ejs %>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $("#go").click(function () {
+                $.ajax({
+                    type: "GET",
+                    url: "queryName",
+                    data: {searchName: $("#content").val()},
+                    dataType: "text",
+                    success: getData
+                });
+            })
+            function getData(result) {
+                var dataObj=JSON.parse(result);
+                var data='';
+                data+='<table class="table table-responsive" tyle="border: solid 1px deeppink;collapse: collapse" >' +
+                        "<tr><td>账号</td>" +
+                        "<td>姓名</td>" +
+                        "<td>性别</td>" +
+                        "<td>生日</td>" +
+                        "<td>头像</td>" +
+                        "</tr>";
+                for(var i=0;i<dataObj.length;i++){
+                    data+="<tr>"
+                    data+='<td>'+dataObj[i].UserId+"</td>";
+                    data+='<td>'+dataObj[i].UserName+"</td>";
+                    data+='<td>'+dataObj[i].Gender+"</td>";
+                    data+='<td>'+dataObj[i].BirthDate+"</td>";
+                    data+='<td><img src="/upload/'+dataObj[i].Pic+' "width="50px"></td>';
+                    data+='</tr>';
+                }
+                data+='</table>'
+                $('.result').html(data)
+            }
+        })
+    </script>
+</head>
+<body>
+<%-include layout.ejs%>
+<%-include nav.ejs%>
+<h2>查询界面</h2>
+
+<!--<form action="queryEnd" method="get">-->
+    <input type="search" id="content" name="search" placeholder="请输入用户名或用户id">
+    <input type="submit" value="查找" id="go">
+<!--</form>-->
+<div class="container">
+
+    <div class="result">
+
+    </div>
+</div>
+<%-include footerScript.ejs%>
+</body>
+</html>

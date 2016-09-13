@@ -1,0 +1,113 @@
+
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a href="/" class="navbar-brand">逸途</a>
+
+		</div>
+		<div class="collapse navbar-collapse" id="navbar1">
+			<ul class="nav navbar-nav">
+				<li class="active">
+					<a href="/">首页<span class="glyphicon glyphicon-home"></span></a>
+				</li>
+				<li><a href="/dynamic">动态 <span class="glyphicon glyphicon-facetime-video"></span></a></li>
+
+				<li><a href="#">发布<span class="glyphicon glyphicon-pencil"></span></a></li>
+
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">目的地
+						<span class="caret"></span>
+					</a>
+					<form class="dropdown-menu" role="menu">
+						<div class="form-group">
+							<label for="province">省：</label>
+							<select name="" id="province" class="form-control">
+								<option value="">江苏</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="city">省：</label>
+							<select id="city" class="form-control">
+								<option>苏州市</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="county">省：</label>
+							<select id="county" class="form-control">
+								<option>吴中区</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+							</select>
+						</div>
+					</form>
+				</li>
+				<li class="dropdown " id="logined">
+
+					<a class="dropdown-toggle" href="#" data-toggle="dropdown">
+
+						<img alt="Bob Nilson" src="images/avatar_small.jpg">
+
+						<span class="username">Bob Nilson</span>
+
+						<span class="glyphicon glyphicon-menu-down"></span>
+
+					</a>
+
+					<ul class="dropdown-menu">
+
+						<li><a href="#">消息<i class="icon-envelope"></i></a></li>
+						<li><a href="/query">搜索<i class="icon-envelope"></i></a></li>
+
+						<li><a href="/showUser">个人主页<i class="icon-user"></i></a></li>
+
+						<li class="divider"></li>
+
+						<!--<li><a href="#"><i class="icon-lock"></i> Lock Screen</a></li>-->
+
+						<li><a href="/logout">退出<i class="icon-key"></i></a></li>
+
+					</ul>
+
+				</li>
+				<li class="dropdown " id="not_login">
+
+					<a class="dropdown-toggle" href="#" data-toggle="dropdown">
+
+						<!--<img alt="Bob Nilson" src="image/avatar_small.jpg">-->
+
+						<span class="glyphicon glyphicon-user"></span>
+						<span class="to_login">未登录</span>
+
+						<span class="glyphicon glyphicon-menu-down"></span>
+
+					</a>
+
+					<ul class="dropdown-menu">
+
+						<li><a href="/login">登录<span class="glyphicon glyphicon-log-in"></span></a></li>
+
+						<li><a href="/register">注册<span class="glyphicon glyphicon-briefcase"></span></a></li>
+
+					</ul>
+
+				</li>
+				<form action="" class="navbar-form navbar-right" role="form">
+					<button class="btn btn-success btn-sign" type="button">打卡</button>
+				</form>
+
+			</ul>
+		</div>
+	</div>
+</nav>

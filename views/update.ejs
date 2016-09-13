@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <%-include layout.ejs%>
+
+</head>
+<body>
+<%-include nav.ejs%>
+<form method='post' action='javascript:;' role="form" id="update">
+    <h2>修改——</h2>
+    <input type="text"  name="UserId" placeholder="请输入用户名" readonly  value=<%=users[0].UserId%>><br><br>
+    <input type="password" required name="UserPassword" placeholder="请输入密码" value=<%=users[0].UserPassword%>><br><br>
+    <input type="text" required name="UserName" placeholder="姓名" value=<%=users[0].UserName%>><br><br>
+    <input type="text" required name="Gender" placeholder="性别" value=<%=users[0].Gender%>><br><br>
+    <input type="text" required name="BirthDate" placeholder="出生日期" value=<%=users[0].BirthDate%>><br><br>
+    <input type="file" required name="updatePic" value=<%=users[0].Pic%>><img src="/upload/<%=users[0].Pic%>" alt="" height="50px" id="headerPic"><br><br>
+    <button value="" onclick="updateInfo()">修改</button><span id="spanMessage"></span>
+</form>
+
+<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<%-include footerScript.ejs%>
+<!--<script src="../public/javascripts/demo.js"></script>-->
+
+<!--<script src="./../public/javascripts/demo.js"></script>-->
+<script src="/javascripts/update.js"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>在线购物</title>
+    <%-include layout.ejs%>
+</head>
+<body>
+<%-include nav.ejs%>
+<div class="row">
+    <div class="col-md-8 col-lg-offset-2">
+        <form action="/login2" method="post">
+            <div class="form-group">
+                <input class="form-control" type="text" required name="uid" placeholder="请输入用户名">
+
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="password" required name="pwd" placeholder="请输入密码">
+            </div>
+            <input type="submit" value="登录">
+        </form>
+    </div>
+</div>
+<%-include footerScript.ejs%>
+</body>
+</html>
