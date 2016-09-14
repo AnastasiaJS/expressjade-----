@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>我的</title>
+	<%- include layout.ejs %>
+	<link rel="stylesheet" href="stylesheets/my.css">
+</head>
+<body>
+<head>
+	<%- include nav.ejs %>
+</head>
+<section class="body">
+	<section class="body_bgi _img_left"></section>
+	<section class="body_cneter">
+		<%-include my_aside.ejs%>
+		<article>
+			<section class="article_send">
+				<a href="/send" target="_">
+					<section>
+						<span>发布名片卡</span>
+					</section>
+				</a>
+			</section>
+			<section class="article_show">
+				<p><a href="#">好好学习</a>收藏了关于<a href="">汕尾</a>的游记<a href="">【鱼爷叹美食】汕尾美食之街边小吃篇</a> 2016-08-22 17:13:41</p>
+				<p><a href="#">好好学习</a>收藏了关于<a href="">汕尾</a>的游记<a href=""> 汕尾——汕尾旅游攻略——汕尾美食（2016年8月更新）</a>2016-08-22
+					17:12:35</p>
+			</section>
+			<section class="article_card_1">
+				<img alt="140x140" src="/images/car01.jpeg"/>
+				<h3><strong><a href="#">五岳-第一站-衡山</a></strong></h3>
+				<p class="_color">
+					<span class="glyphicon glyphicon-eye-open"></span>
+					<span>445</span>
+					<span class="glyphicon glyphicon-star"></span>
+					<span>326</span>
+					<span>2016-09-13</span>
+				</p>
+				<p>
+					给自己定的目标是，2016年要把五岳三山爬掉，必须是爬上去的，从山脚下到最高峰，不要坐巴士不要坐缆车，一步一步，到山顶。
+				</p>
+			</section>
+			<section class="article_card_1">
+				<img alt="140x140" src="/images/car01.jpeg"/>
+				<h3><strong><a href="#">五岳-第一站-衡山</a></strong></h3>
+				<p class="_color">
+					<span class="glyphicon glyphicon-eye-open"></span>
+					<span>445</span>
+					<span class="glyphicon glyphicon-star"></span>
+					<span>326</span>
+					<span>2016-09-13</span>
+				</p>
+				<p>
+					给自己定的目标是，2016年要把五岳三山爬掉，必须是爬上去的，从山脚下到最高峰，不要坐巴士不要坐缆车，一步一步，到山顶。
+				</p>
+			</section>
+		</article>
+	</section>
+	<section class="body_bgi _img_right"></section>
+</section>
+<footer>
+	<%- include footerScript.ejs %>
+</footer>
+</body>
+</html>

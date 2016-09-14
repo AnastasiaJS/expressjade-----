@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>我的</title>
+	<%-include layout.ejs%>
+	<link rel="stylesheet" href="stylesheets/send.css">
+
+</head>
+<body>
+	<head>
+		<%-include nav.ejs%>
+	</head>
+	<section class="body">
+		<form name="tourcard" method="post">
+			<section class="card_show">
+				<section class="text_info">请填写名片卡标题</section>
+				<section class="car_input"><input type="text" name="_Title"></section>
+			</section>
+			<section class="card_show _show">
+				<section class="text_info">请添加封面图片</section>
+				<section class="car_input _Face"><input type="file" name="_FacePic"></section>
+				<section class="showFacePic"></section>
+			</section>
+			<section class="_flex">
+				<section class="card_show _left">
+					<section class="text_info _one">请填写一次的价格</section>
+					<section class="car_input _two"><input type="text" name="_Price"></section>
+				</section>
+				<section class="card_show _right">
+					<section class="text_info _one">请选择是否可以砍价</section>
+					<section class="car_input_radio _two">
+						<div>
+						<span><input type="radio" name="_cut" class="_cut">可以</span>
+						<span><input type="radio" name="_cut" class="_cut">不可以</span>
+						</div>
+					</section>
+				</section>
+			</section>
+			<section class="_flex">
+				<section class="card_show _left">
+					<section class="text_info _one">请填写微信认证暗号</section>
+					<section class="car_input _two"><input type="text" name="_Anhao"></section>
+				</section>
+				<section class="card_show _right">
+					<section class="text_info">请选择地区</section>
+					<section class="car_select">
+						<div class="_select_div">
+						<select name="Provence">
+							<option>江苏省</option>
+							<option>4566</option>
+							<option>4654656</option>
+						</select>
+						<select name="City">
+							<option>苏州市</option>
+							<option>4566</option>
+							<option>4654656</option>
+						</select>
+						<select name="HomeTown">
+							<option>吴中区</option>
+							<option>4566</option>
+							<option>4654656</option>
+						</select>
+						</div>
+					</section>
+				</section>
+			</section>
+			<section class="card_show _about">
+				<section class="text_info ">请填写相关描述</section>
+				<span>请按照相关格式填写，有助于清晰显示您的描述内容噢！</span><br>
+				<span>例：</span><br>
+				<span>【关于我】本人是一个喜欢运动的人</span><br>
+				<span>【关于项目】我们可以提前交流路线，根据你的爱好或体力再做里程和路线的调整</span><br>
+				<span>【注意】因为是上班狗，只能周六周末和假期有时间，需要提前预约以及沟通拍摄事宜</span><br>
+				<section class="car_input _area">
+				<textarea name="_About"></textarea>
+				</section>
+			</section>
+			<section class="card_show _about _oth">
+				<section class="text_info ">请填写其他备注信息</section>
+				<section class="car_input _area _other">
+				<textarea name="_Other"></textarea>
+				</section>
+			</section>
+		</form>
+		<form name="photo" method="post">
+			<section class="card_show _Photo">
+				<section class="text_info">添加文字相关照片</section>
+				<section class="car_input"><input type="file" name="_Photo"></section>
+				<section class="showFacePic"></section>
+			</section>
+		</form>
+	</section>
+	<footer>
+		<%-include footerScript.ejs%>
+	</footer>
+</body>
+</html>

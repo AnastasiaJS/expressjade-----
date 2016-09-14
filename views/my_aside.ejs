@@ -1,0 +1,72 @@
+<aside>
+	<section class="aside_section_01"></section>
+	<section class="aside_section_02">
+		<img src="/images/head_pic01.jpeg">
+	</section>
+	<section class="aside_section_03">
+		<h1><%=user[0].Nickname%></h1>
+
+	</section>
+	<section class="aside_section_04">
+		<span class="aside_section_span span_border">等级：<span class="_04_01">Lv.13</span></span>
+		<span class="aside_section_span">现居：苏州</span>
+	</section>
+	<section class="aside_section_04 _04">
+		<span class="aside_section_span span_border">放荡不羁</span>
+		<span class="aside_section_span span_border">处女座</span>
+		<span class="aside_section_span span_border">28岁</span>
+		<span class="aside_section_span">180cm</span>
+	</section>
+	<section class="aside_section_ul">
+		<table>
+			<tr>
+				<td class="_td">
+					<span class="_td_span">关注</span><br>
+					<span class="_td_span_num"><a href="#"><%=user[0].Fance%></a></span>
+				</td>
+				<td class="_td">
+					<span class="_td_span">粉丝</span><br>
+					<span class="_td_span_num"><a href="#"><%=user[0].Follow%></a></span>
+				</td>
+				<td>
+					<span class="_td_span">收藏</span><br>
+					<span class="_td_span_num"><a href="#"><%=user[0].Save%></a></span>
+				</td>
+			</tr>
+		</table>
+	</section>
+	<section class="aside_section_ _focus">
+		<span class="_focus_span">我的关注</span>
+		<section class="_focus_humen">
+						<span>
+							<img src="/images/focus1.jpeg">
+							<a href="#">Hoildays</a>
+						</span>
+						<span>
+							<img src="/images/focus2.jpeg">
+							<a href="#">齐天大圣</a>
+						</span>
+						<span>
+							<img src="/images/focus3.jpeg">
+							<a href="#">姜饼人</a>
+						</span>
+						<span>
+							<img src="/images/focus4.jpeg">
+							<a href="#">疯果子</a>
+						</span>
+		</section>
+	</section>
+	<section class="aside_section_ _special">
+		<section class="_hid_new"></section>
+		<span class="_special_span"><a href="/order">我的订单</a></span>
+
+		<!-- <span class="_alert">暂无特权</span> -->
+	</section>
+	<section class="aside_section_ _message">
+		<span class="_message_span">留言板</span>
+		<form>
+			<textarea name="liuyan"></textarea>
+			<input type="submit" name="submit" value="留言">
+		</form>
+	</section>
+</aside>

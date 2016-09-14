@@ -1,7 +1,6 @@
 var $conf = require("./../conf/db");
 var $sql = require('./userSqlMapping');
 // var formidable = require('formidable')
-
 var path=require("path")
 var fs = require('fs')
 var mysql = require('mysql');
@@ -221,17 +220,20 @@ var userMultipleUpload=function (req, res) {
 };
 
 //get参数获取
-var updateById = function (req, res, next) {
+var myZiliao = function (req, res, next) {
     //var id = +req.query.UserId; // 为了拼凑正确的sql语句，这里要转下整数
-    var _id = req.query.id;
+    var _id = req.session.user_id;
 
     console.log("_id:" + _id);
     pool.getConnection(function (err, connection) {
-        connection.query($sql.queryById, _id, function (err, result) {
+        connection.query($sql.user_queryById, [_id], function (err, result) {
+            if(err){
+                // res.redirect('/login');
+            }
             // res.send(JSON.stringify(result));//往页面发送JSON字符串数据；
             // res.render('query.ejs')
-            res.render("update.ejs",{users:result})
-
+            console.log(result)
+            res.render("my.ejs",{user:result});
             connection.release();
 
         });
@@ -252,8 +254,8 @@ var searchUserByname = function (req, res, next) {
 };
 var loginJudge = function (req, res, next) {
 
-    var id = req.body.uid;
-    var pwd = req.body.pwd;
+    var id = req.body.Id;
+    var pwd = req.body.Password;
 
     var hash = crypto.createHash("md5");
     hash.update(pwd);          //直接对"123456"字符串加密
@@ -262,11 +264,11 @@ var loginJudge = function (req, res, next) {
 
 
     pool.getConnection(function (err, connection) {
-        connection.query($sql.queryAll, function (err, result) {
+        connection.query($sql.register_queryAll, function (err, result) {
             for (var i = 0; i < result.length; i++) {
-                console.log(encode+"===>"+result[i].UserPassword)
-                if (id == result[i].UserId) {
-                    if(encode == result[i].UserPassword){
+                console.log(pwd+"===>"+result[i].Password)
+                if (id == result[i].Id) {
+                    if(encode == result[i].Password){
                         req.session.user_id = id;
                         req.session.isLogin = true;
                         console.log('========'+req.session.user_id);
@@ -297,13 +299,55 @@ var logout = function (req, res, next) {
     res.send("注销成功！")
 
 }
-exports.queryAll = queryAll;
+var register=function (req,res,next) {
+    var param = req.body;
+
+//================insert==========================
+    if(param.Id == null || param.Password == null) {
+        res.json({code: 500, msg: {url: 'http://' + req.headers.host + '/' + filename}});
+    }
+    /*-------------string md5------------------*/
+    var hash = crypto.createHash("md5");
+    hash.update(param.Password);          //直接对"123456"字符串加密
+    var encode = hash.digest('hex');
+    console.log("string:" + encode);
+
+    pool.getConnection(function(err, connection) {
+        console.log('ok 1 ok 1 ok 1 ok 1 ok 1 ok 1 ok ok')
+
+        connection.query($sql.register_insert, [param.Id,encode], function(err, result) {
+            if (err) {
+                // res.render('fail', {
+                //     result: result
+                // });
+                res.json({code: 500, msg: {url: 'http://' + req.headers.host + '/' + 'register'}});
+                console.log('no no no no no n o no no no no no no no')
+
+            }
+            else {
+                // 使用页面进行跳转提示
+                if (result.affectedRows > 0) {
+                    //res.render('suc', {  result: result   }); // 第二个参数可以直接在jade中使用
+                    res.json({code: 200, msg: {url: 'http://' + req.headers.host + '/' }});
+
+                } else {
+                    res.json({code: 500, msg: {url: 'http://' + req.headers.host + '/'}});
+                    res.render('fail', {
+                        result: result
+                    });
+                }
+            }
+            connection.release();
+        });
+    });
+}
+exports.myZiliao = myZiliao;
 exports.add = add;
-exports.updateById = updateById;
+// exports.updateById = updateById;
 exports.searchUserByname = searchUserByname;
 exports.loginJudge = loginJudge;
 exports.logout = logout;
-exports.update = update;
+exports.register = register;
 exports.update = update;
 exports.deleteById = deleteById;
 exports.userMultipleUpload = userMultipleUpload;

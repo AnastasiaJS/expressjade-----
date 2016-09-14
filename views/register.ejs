@@ -7,27 +7,15 @@
 <body>
 <%-include layout.ejs%>
 <%-include nav.ejs%>
-<form method='post' action='javascript:;' role="form" id="frmUploadFile">
+<form method='post' action='javascript:;' role="form" id="formRegister">
     <h2>注册——</h2>
-    <input type="text" required name="UserId" placeholder="请输入用户名"><br><br>
-    <input type="password" required name="UserPassword" placeholder="请输入密码"><br><br>
-    <input type="text" required name="UserName" placeholder="姓名"><br><br>
-    <div class="form-group">
-        <label class="radio-inline">
-            <input type="radio"  value="男" name="Gender">男性
-        </label>
-        <label class="radio-inline">
-            <input type="radio"  value="女" name="Gender">女性
-        </label>
-    </div>
-
-    <input type="text" required name="BirthDate" placeholder="出生日期"><br><br>
-    <input type="file" required name="Pic" id="headerPic"><div id="imgShow"></div><br><br>
-    <button value="" onclick="uploadFile()">注册</button><span id="spanMessage"></span>
+    <input type="text" required name="Id" placeholder="请输入用户名"><br><br>
+    <input type="password" required name="Password" placeholder="请输入密码"><br><br>
+    <button value="" onclick="register()">注册</button><span id="spanMessage"></span>
 </form>
 
 <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="/javascripts/demo.js"></script>
+<script src="/javascripts/register.js"></script>
 <%-include footerScript.ejs%>
 </body>
 </html>
