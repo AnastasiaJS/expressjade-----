@@ -4,7 +4,8 @@ var $sql = require('./userSqlMapping');
 
 var path=require("path")
 var fs = require('fs')
-var mysql = require('mysql');var uuid = require('node-uuid');
+var mysql = require('mysql');
+var uuid = require('node-uuid');
 var crypto = require('crypto');
 var url=require("url")
 
@@ -105,13 +106,13 @@ var deleteById=function (req,res,next) {
 //post参数获取
 var add = function (req, res) {
     var param = req.body;
-    console.log(req.files.files.length);
+    console.log(req.files.Pic.length);
 
     //================upload==========================
     console.log(req.files);
-    console.log("req.files.files.originalFilename:"+req.files.files.originalFilename);
-    console.log("req.files.files.path:"+req.files.files.path);
-    var filename = req.files.files.originalFilename || path.basename(req.files.files.path);
+    console.log("req.files.Pic.originalFilename:"+req.files.Pic.originalFilename);
+    console.log("req.files.Pic.path:"+req.files.Pic.path);
+    var filename = req.files.Pic.originalFilename || path.basename(req.files.Pic.path);
     console.log("filename:"+filename);
     console.log("dirname:"+path.dirname(__filename));
     console.log("  path.resolve(__dirname, '../'):"+  path.resolve(__dirname, '../'));
@@ -126,9 +127,9 @@ var add = function (req, res) {
     /*-------------filename------------------*/
     var targetPath =   path.resolve(__dirname, '../') + '/public/upload/' + _myFileName;
     console.log("targetPath:"+targetPath);
-    console.log("req.files.files.path:"+req.files.files.length);
+    console.log("req.files.files.path:"+req.files.Pic.length);
     //copy file
-    fs.createReadStream(req.files.files.path).pipe(fs.createWriteStream(targetPath));
+    fs.createReadStream(req.files.Pic.path).pipe(fs.createWriteStream(targetPath));
     //return file url
 
 
@@ -155,9 +156,11 @@ var add = function (req, res) {
 
 
     pool.getConnection(function(err, connection) {
+        console.log('ok 1 ok 1 ok 1 ok 1 ok 1 ok 1 ok ok')
+
         connection.query($sql.insert,  [ param.UserId,encode,param.UserName, param.Gender, param.BirthDate,_myFileName], function(err, result) {
             if (err) {
-                console.log(err.message);
+                console.log(err.message+'22222222222222222');
                 // res.render('fail', {
                 //     result: result
                 // });
@@ -167,6 +170,7 @@ var add = function (req, res) {
             else {
                 // 使用页面进行跳转提示
                 if (result.affectedRows > 0) {
+                    console.log('ok ok ok o k ok ok ok ok')
                     //res.render('suc', {  result: result   }); // 第二个参数可以直接在jade中使用
                     res.json({code: 200, msg: {url: 'http://' + req.headers.host + '/' + filename}});
 
@@ -187,13 +191,13 @@ var userMultipleUpload=function (req, res) {
     var param = req.body;
     console.log("UserDao userMultipleUpload：");
     console.log(req.files);
-    console.log(req.files.files.length);
-    for(var i=0;i<req.files.files.length;i++){
+    console.log(req.files.multPic.length);
+    for(var i=0;i<req.files.multPic.length;i++){
         //================upload==========================
         console.log(req.files);
-        console.log("req.files.files.originalFilename:"+req.files.files[i].originalFilename);
-        console.log("req.files.files.path:"+req.files.files[i].path);
-        var filename = req.files.files[i].originalFilename || path.basename(req.files.files[i].path);
+        console.log("req.files.files.originalFilename:"+req.files.multPic[i].originalFilename);
+        console.log("req.files.files.path:"+req.files.multPic[i].path);
+        var filename = req.files.multPic[i].originalFilename || path.basename(req.files.multPic[i].path);
         console.log("filename:"+filename);
         console.log("dirname:"+path.dirname(__filename));
         console.log("  path.resolve(__dirname, '../'):"+  path.resolve(__dirname, '../'));
@@ -208,9 +212,9 @@ var userMultipleUpload=function (req, res) {
         /*-------------filename------------------*/
         var targetPath =   path.resolve(__dirname, '../') + '/public/upload/' + _myFileName;
         console.log("targetPath:"+targetPath);
-        console.log("req.files.files.path:"+req.files.files[i].length);
+        console.log("req.files.files.path:"+req.files.multPic[i].length);
         //copy file
-        fs.createReadStream(req.files.files[i].path).pipe(fs.createWriteStream(targetPath));
+        fs.createReadStream(req.files.multPic[i].path).pipe(fs.createWriteStream(targetPath));
         sqlUserPic+="('"+param.UserId+"','"+_myFileName+"'),"
     }
     sqlUserPic=sqlUserPic.substr(0,sqlUserPic.length-1);

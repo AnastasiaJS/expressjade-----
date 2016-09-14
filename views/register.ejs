@@ -12,9 +12,17 @@
     <input type="text" required name="UserId" placeholder="请输入用户名"><br><br>
     <input type="password" required name="UserPassword" placeholder="请输入密码"><br><br>
     <input type="text" required name="UserName" placeholder="姓名"><br><br>
-    <input type="text" required name="Gender" placeholder="性别"><br><br>
+    <div class="form-group">
+        <label class="radio-inline">
+            <input type="radio"  value="男" name="Gender">男性
+        </label>
+        <label class="radio-inline">
+            <input type="radio"  value="女" name="Gender">女性
+        </label>
+    </div>
+
     <input type="text" required name="BirthDate" placeholder="出生日期"><br><br>
-    <input type="file" required name="files" id="headerPic"><div id="imgShow"></div><br><br>
+    <input type="file" required name="Pic" id="headerPic"><div id="imgShow"></div><br><br>
     <button value="" onclick="uploadFile()">注册</button><span id="spanMessage"></span>
 </form>
 
