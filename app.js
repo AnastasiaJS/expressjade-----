@@ -9,7 +9,6 @@ var session=require('express-session')
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-// var queryEnd = require('./routes/resqueryEnd');
 
 var app = express();
 
@@ -17,9 +16,9 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));//设置页面、视图所在的目录；
 
 var engines=require('consolidate');
-app.engine('html',engines.ejs)
-app.engine('jade',engines.jade)
-app.set('view engine', 'jade');
+app.engine('.html',require('ejs').__express)
+// app.engine('jade',engines.jade)
+app.set('view engine', 'html');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 

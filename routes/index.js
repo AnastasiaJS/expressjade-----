@@ -12,13 +12,13 @@ router.get('/card_inner', function(req, res, next) {
 
 router.get('/showUser',function (req,res,next) {
   // 判断是否登录
-  // if(req.session.isLogin==true){
+  if(req.session.isLogin==true){
     //===============================
     userDao.queryAll(req, res, next);
-  // }
-  // else {
-  //   res.send("您无权限访问！");
-  // }
+  }
+  else {
+    res.send("您无权限访问！");
+  }
 });
 router.get('/query',function (req,res,next) {
   res.render('query.ejs');

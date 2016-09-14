@@ -126,21 +126,12 @@ var add = function (req, res) {
     console.log("_myFileName:" + _myFileName);
     /*-------------filename------------------*/
     var targetPath =   path.resolve(__dirname, '../') + '/public/upload/' + _myFileName;
-    console.log("targetPath:"+targetPath);
-    console.log("req.files.files.path:"+req.files.Pic.length);
     //copy file
     fs.createReadStream(req.files.Pic.path).pipe(fs.createWriteStream(targetPath));
     //return file url
 
 
 //================insert==========================
-    console.log(" userId :"+param.UserId);
-    console.log(" UserName :"+param.UserName);
-    console.log(" UserPassword :"+param.UserPassword);
-    console.log(" Gender :"+param.Gender);
-    console.log(" BirthDate :"+param.BirthDate);
-    console.log(" Pic :"+filename);
-
     if(param.UserName == null || param.Gender == null || param.UserId == null) {
         console.log("param.UserName == null");
         //res.render('fail', {        result: result    });
@@ -160,7 +151,6 @@ var add = function (req, res) {
 
         connection.query($sql.insert,  [ param.UserId,encode,param.UserName, param.Gender, param.BirthDate,_myFileName], function(err, result) {
             if (err) {
-                console.log(err.message+'22222222222222222');
                 // res.render('fail', {
                 //     result: result
                 // });
@@ -170,7 +160,6 @@ var add = function (req, res) {
             else {
                 // 使用页面进行跳转提示
                 if (result.affectedRows > 0) {
-                    console.log('ok ok ok o k ok ok ok ok')
                     //res.render('suc', {  result: result   }); // 第二个参数可以直接在jade中使用
                     res.json({code: 200, msg: {url: 'http://' + req.headers.host + '/' + filename}});
 
@@ -191,16 +180,9 @@ var userMultipleUpload=function (req, res) {
     var param = req.body;
     console.log("UserDao userMultipleUpload：");
     console.log(req.files);
-    console.log(req.files.multPic.length);
     for(var i=0;i<req.files.multPic.length;i++){
         //================upload==========================
-        console.log(req.files);
-        console.log("req.files.files.originalFilename:"+req.files.multPic[i].originalFilename);
-        console.log("req.files.files.path:"+req.files.multPic[i].path);
         var filename = req.files.multPic[i].originalFilename || path.basename(req.files.multPic[i].path);
-        console.log("filename:"+filename);
-        console.log("dirname:"+path.dirname(__filename));
-        console.log("  path.resolve(__dirname, '../'):"+  path.resolve(__dirname, '../'));
         //copy file to a public directory
 
         /*-------------filename------------------*/
@@ -211,8 +193,6 @@ var userMultipleUpload=function (req, res) {
         console.log("_myFileName:" + _myFileName);
         /*-------------filename------------------*/
         var targetPath =   path.resolve(__dirname, '../') + '/public/upload/' + _myFileName;
-        console.log("targetPath:"+targetPath);
-        console.log("req.files.files.path:"+req.files.multPic[i].length);
         //copy file
         fs.createReadStream(req.files.multPic[i].path).pipe(fs.createWriteStream(targetPath));
         sqlUserPic+="('"+param.UserId+"','"+_myFileName+"'),"
@@ -274,12 +254,19 @@ var loginJudge = function (req, res, next) {
 
     var id = req.body.uid;
     var pwd = req.body.pwd;
+
+    var hash = crypto.createHash("md5");
+    hash.update(pwd);          //直接对"123456"字符串加密
+    var encode = hash.digest('hex');
+    console.log("string:" + encode);
+
+
     pool.getConnection(function (err, connection) {
         connection.query($sql.queryAll, function (err, result) {
             for (var i = 0; i < result.length; i++) {
-                console.log(result[i].UserId+"===>"+result[i].UserPassword)
+                console.log(encode+"===>"+result[i].UserPassword)
                 if (id == result[i].UserId) {
-                    if(pwd == result[i].UserPassword){
+                    if(encode == result[i].UserPassword){
                         req.session.user_id = id;
                         req.session.isLogin = true;
                         console.log('========'+req.session.user_id);
